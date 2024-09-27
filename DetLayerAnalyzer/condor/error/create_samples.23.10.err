@@ -1,0 +1,14 @@
+27-Sep-2024 09:27:03 CEST  Initiating request to open file file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/0_PU//zpos/n100/Eta_23/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e10GeV_eta23_zpos_events100_nopu_2.root
+----- Begin Fatal Exception 27-Sep-2024 09:27:03 CEST-----------------------
+An exception of category 'FileOpenError' occurred while
+   [0] Constructing the EventProcessor
+   [1] Constructing input source of type PoolSource
+   [2] Calling RootInputFileSequence::initTheFile()
+   [3] Calling StorageFactory::open()
+   [4] Calling File::sysopen()
+Exception Message:
+Failed to open the file '///eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/0_PU//zpos/n100/Eta_23/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e10GeV_eta23_zpos_events100_nopu_2.root'
+   Additional Info:
+      [a] Input file file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/0_PU//zpos/n100/Eta_23/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e10GeV_eta23_zpos_events100_nopu_2.root could not be opened.
+      [b] open() failed with system error 'No such file or directory' (error code 2)
+----- End Fatal Exception -------------------------------------------------

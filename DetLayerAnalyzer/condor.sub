@@ -1,0 +1,15 @@
+executable            = run_crab.sh
+arguments             = $(eta) $(energy) $(nevents) $(idx) $(root) $(outdir) $(xi)
+universe              = vanilla
++JobFlavour = "espresso"
+should_transfer_files = YES
+transfer_input_files  = Config_crab.py
+getenv                = true
+output                = condor/output/create_samples.$(eta).$(energy).out
+error                 = condor/error/create_samples.$(eta).$(energy).err
+log                   = condor/log/create_samples.$(eta).$(energy).log
+MY.XRDCP_CREATE_DIR = True
++DesiredOS = "EL9"
+
+queue eta, energy, nevents, idx, root, outdir, xi from files.txt
+

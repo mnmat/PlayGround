@@ -1,0 +1,10 @@
+<use name="DataFormats/TrackReco"/>
+<use name="FWCore/Framework"/>
+<use name="FWCore/ParameterSet"/>
+<use name="FWCore/PluginManager"/>
+<use name="Geometry/HGCalCommonData"/>
+<use name="Geometry/CaloGeometry"/>
+<use name="Geometry/CommonDetUnit" source_only="1"/>
+<use name="Geometry/Records"/>
+<use name="RecoLocalCalo/HGCalRecAlgos"/>
+<flags EDM_PLUGIN="1"/>

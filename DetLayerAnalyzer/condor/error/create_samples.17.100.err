@@ -1,0 +1,286 @@
+27-Sep-2024 15:28:26 CEST  Initiating request to open file file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/Rk_Rx2/0_PU//zpos/n100/Eta_17/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e100GeV_eta17_zpos_events100_nopu_4.root
+27-Sep-2024 15:29:14 CEST  Successfully opened file file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/Rk_Rx2/0_PU//zpos/n100/Eta_17/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e100GeV_eta17_zpos_events100_nopu_4.root
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 on stream 0 at 27-Sep-2024 15:29:45.494 CEST
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+%MSG-e MTDDetLayers:   HGCDetLayerGeometryESProducer:hgcdetlayergeometry@callESModule  27-Sep-2024 15:30:08 CEST Run: 1 Event: 1
+ MTDDiskBuilderFromDet : Something went wrong with Phi Sorting !
+%MSG
+Begin processing the 2nd record. Run 1, Event 2, LumiSection 1 on stream 0 at 27-Sep-2024 15:30:29.433 CEST
+Begin processing the 3rd record. Run 1, Event 3, LumiSection 1 on stream 0 at 27-Sep-2024 15:30:35.626 CEST
+Begin processing the 4th record. Run 1, Event 4, LumiSection 1 on stream 0 at 27-Sep-2024 15:30:43.995 CEST
+Begin processing the 5th record. Run 1, Event 5, LumiSection 1 on stream 0 at 27-Sep-2024 15:30:51.512 CEST
+Begin processing the 6th record. Run 1, Event 6, LumiSection 1 on stream 0 at 27-Sep-2024 15:30:57.021 CEST
+Begin processing the 7th record. Run 1, Event 7, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:03.372 CEST
+Begin processing the 8th record. Run 1, Event 8, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:09.200 CEST
+Begin processing the 9th record. Run 1, Event 9, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:14.408 CEST
+Begin processing the 10th record. Run 1, Event 10, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:20.572 CEST
+Begin processing the 11th record. Run 1, Event 11, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:28.395 CEST
+Begin processing the 12th record. Run 1, Event 12, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:35.194 CEST
+Begin processing the 13th record. Run 1, Event 13, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:43.338 CEST
+Begin processing the 14th record. Run 1, Event 14, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:49.504 CEST
+Begin processing the 15th record. Run 1, Event 15, LumiSection 1 on stream 0 at 27-Sep-2024 15:31:55.933 CEST
+Begin processing the 16th record. Run 1, Event 16, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:00.577 CEST
+Begin processing the 17th record. Run 1, Event 17, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:07.531 CEST
+Begin processing the 18th record. Run 1, Event 18, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:13.780 CEST
+Begin processing the 19th record. Run 1, Event 19, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:21.517 CEST
+Begin processing the 20th record. Run 1, Event 20, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:29.431 CEST
+Begin processing the 21st record. Run 1, Event 21, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:35.617 CEST
+Begin processing the 22nd record. Run 1, Event 22, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:43.159 CEST
+Begin processing the 23rd record. Run 1, Event 23, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:48.171 CEST
+Begin processing the 24th record. Run 1, Event 24, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:54.296 CEST
+Begin processing the 25th record. Run 1, Event 25, LumiSection 1 on stream 0 at 27-Sep-2024 15:32:59.618 CEST
+Begin processing the 26th record. Run 1, Event 26, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:03.684 CEST
+Begin processing the 27th record. Run 1, Event 27, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:09.195 CEST
+Begin processing the 28th record. Run 1, Event 28, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:14.441 CEST
+Begin processing the 29th record. Run 1, Event 29, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:21.159 CEST
+Begin processing the 30th record. Run 1, Event 30, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:28.932 CEST
+Begin processing the 31st record. Run 1, Event 31, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:35.661 CEST
+Begin processing the 32nd record. Run 1, Event 32, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:42.331 CEST
+Begin processing the 33rd record. Run 1, Event 33, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:49.439 CEST
+Begin processing the 34th record. Run 1, Event 34, LumiSection 1 on stream 0 at 27-Sep-2024 15:33:55.220 CEST
+Begin processing the 35th record. Run 1, Event 35, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:01.650 CEST
+Begin processing the 36th record. Run 1, Event 36, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:08.117 CEST
+Begin processing the 37th record. Run 1, Event 37, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:14.826 CEST
+Begin processing the 38th record. Run 1, Event 38, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:20.147 CEST
+Begin processing the 39th record. Run 1, Event 39, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:25.686 CEST
+Begin processing the 40th record. Run 1, Event 40, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:30.443 CEST
+Begin processing the 41st record. Run 1, Event 41, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:34.298 CEST
+Begin processing the 42nd record. Run 1, Event 42, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:40.272 CEST
+Begin processing the 43rd record. Run 1, Event 43, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:45.259 CEST
+Begin processing the 44th record. Run 1, Event 44, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:51.693 CEST
+Begin processing the 45th record. Run 1, Event 45, LumiSection 1 on stream 0 at 27-Sep-2024 15:34:56.102 CEST
+Begin processing the 46th record. Run 1, Event 46, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:01.285 CEST
+Begin processing the 47th record. Run 1, Event 47, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:08.335 CEST
+Begin processing the 48th record. Run 1, Event 48, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:14.055 CEST
+Begin processing the 49th record. Run 1, Event 49, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:20.253 CEST
+Begin processing the 50th record. Run 1, Event 50, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:24.827 CEST
+Begin processing the 51st record. Run 1, Event 51, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:30.283 CEST
+Begin processing the 52nd record. Run 1, Event 52, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:37.003 CEST
+Begin processing the 53rd record. Run 1, Event 53, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:43.231 CEST
+Begin processing the 54th record. Run 1, Event 54, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:48.261 CEST
+Begin processing the 55th record. Run 1, Event 55, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:52.718 CEST
+Begin processing the 56th record. Run 1, Event 56, LumiSection 1 on stream 0 at 27-Sep-2024 15:35:57.599 CEST
+Begin processing the 57th record. Run 1, Event 57, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:02.589 CEST
+Begin processing the 58th record. Run 1, Event 58, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:09.006 CEST
+Begin processing the 59th record. Run 1, Event 59, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:14.875 CEST
+Begin processing the 60th record. Run 1, Event 60, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:19.858 CEST
+Begin processing the 61st record. Run 1, Event 61, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:26.411 CEST
+Begin processing the 62nd record. Run 1, Event 62, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:31.792 CEST
+Begin processing the 63rd record. Run 1, Event 63, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:37.717 CEST
+Begin processing the 64th record. Run 1, Event 64, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:42.123 CEST
+Begin processing the 65th record. Run 1, Event 65, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:46.570 CEST
+Begin processing the 66th record. Run 1, Event 66, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:51.044 CEST
+Begin processing the 67th record. Run 1, Event 67, LumiSection 1 on stream 0 at 27-Sep-2024 15:36:55.687 CEST
+Begin processing the 68th record. Run 1, Event 68, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:00.169 CEST
+Begin processing the 69th record. Run 1, Event 69, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:04.910 CEST
+Begin processing the 70th record. Run 1, Event 70, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:11.797 CEST
+Begin processing the 71st record. Run 1, Event 71, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:17.872 CEST
+Begin processing the 72nd record. Run 1, Event 72, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:26.269 CEST
+Begin processing the 73rd record. Run 1, Event 73, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:33.998 CEST
+Begin processing the 74th record. Run 1, Event 74, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:40.920 CEST
+Begin processing the 75th record. Run 1, Event 75, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:46.743 CEST
+Begin processing the 76th record. Run 1, Event 76, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:51.848 CEST
+Begin processing the 77th record. Run 1, Event 77, LumiSection 1 on stream 0 at 27-Sep-2024 15:37:57.731 CEST
+Begin processing the 78th record. Run 1, Event 78, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:03.276 CEST
+Begin processing the 79th record. Run 1, Event 79, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:07.046 CEST
+Begin processing the 80th record. Run 1, Event 80, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:12.863 CEST
+Begin processing the 81st record. Run 1, Event 81, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:17.540 CEST
+Begin processing the 82nd record. Run 1, Event 82, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:22.094 CEST
+Begin processing the 83rd record. Run 1, Event 83, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:26.772 CEST
+Begin processing the 84th record. Run 1, Event 84, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:32.375 CEST
+Begin processing the 85th record. Run 1, Event 85, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:38.226 CEST
+Begin processing the 86th record. Run 1, Event 86, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:44.177 CEST
+Begin processing the 87th record. Run 1, Event 87, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:48.712 CEST
+Begin processing the 88th record. Run 1, Event 88, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:54.147 CEST
+Begin processing the 89th record. Run 1, Event 89, LumiSection 1 on stream 0 at 27-Sep-2024 15:38:58.628 CEST
+Begin processing the 90th record. Run 1, Event 90, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:04.268 CEST
+Begin processing the 91st record. Run 1, Event 91, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:09.927 CEST
+Begin processing the 92nd record. Run 1, Event 92, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:15.609 CEST
+Begin processing the 93rd record. Run 1, Event 93, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:21.146 CEST
+Begin processing the 94th record. Run 1, Event 94, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:26.077 CEST
+Begin processing the 95th record. Run 1, Event 95, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:30.401 CEST
+Begin processing the 96th record. Run 1, Event 96, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:35.708 CEST
+Begin processing the 97th record. Run 1, Event 97, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:41.976 CEST
+Begin processing the 98th record. Run 1, Event 98, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:48.169 CEST
+Begin processing the 99th record. Run 1, Event 99, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:53.316 CEST
+Begin processing the 100th record. Run 1, Event 100, LumiSection 1 on stream 0 at 27-Sep-2024 15:39:58.208 CEST
+27-Sep-2024 15:40:03 CEST  Closed file file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/Rk_Rx2/0_PU//zpos/n100/Eta_17/singlemuon_flatEGun_hgcalCenter/step3/step3_singlemuon_e100GeV_eta17_zpos_events100_nopu_4.root
