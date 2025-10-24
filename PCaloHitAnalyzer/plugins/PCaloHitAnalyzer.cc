@@ -124,7 +124,7 @@ private:
 
   hgcal::RecHitTools recHitTools_;
 
-  int eventnr =0;
+  //int eventnr =0;
 
   TTree* tree;
 
@@ -133,6 +133,7 @@ private:
   std::vector<float> pcalo_z;
   std::vector<float> pcalo_e;
   std::vector<int> pcalo_detid;
+  std::vector<int> pcalo_parentID;
   std::vector<int> pcalo_layer;
   std::vector<int> pcalo_evt;
 
@@ -179,6 +180,7 @@ PCaloHitAnalyzer::PCaloHitAnalyzer(const edm::ParameterSet& iConfig)
   tree->Branch("e", &pcalo_e);
   tree->Branch("layer", &pcalo_layer);
   tree->Branch("detid", &pcalo_detid);
+  tree->Branch("parentID", &pcalo_parentID);
   tree->Branch("evt", &pcalo_evt);
 
 }
@@ -216,6 +218,9 @@ void PCaloHitAnalyzer::fillHitMap(std::map<DetId, const HGCRecHit*>& hitMap,
 // ------------ method called for each event  ------------
 void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
   using namespace edm;
+
+  auto const& eventnr = iEvent.id().event();
+
 
   //const TrackerGeometry &geom = iSetup.getData(tecGeomToken_);
   const CaloGeometry &calogeom = iSetup.getData(caloGeomToken_);
@@ -266,6 +271,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
+    //pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
     auto detid = pCaloHit.id();
@@ -283,6 +289,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
+    //pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
 
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
@@ -300,6 +307,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
+    //pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
     auto detid = pCaloHit.id();
@@ -341,9 +349,10 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
   pcalo_z.clear();
   pcalo_e.clear();
   pcalo_detid.clear();
+  pcalo_parentID.clear();
   pcalo_layer.clear();
   pcalo_evt.clear();
-  eventnr=eventnr+1;
+  //eventnr=eventnr+1;
 
 #ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
   // if the SetupData is always needed
