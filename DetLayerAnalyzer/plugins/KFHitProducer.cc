@@ -103,6 +103,8 @@ private:
   edm::ESGetToken<CaloGeometry, CaloGeometryRecord> caloGeomToken_;
   edm::ESGetToken<MagneticField, IdealMagneticFieldRecord> bfieldtoken_;
   edm::ESGetToken<DetHGCTracker,CaloGeometryRecord> DetHGCTrackerToken_;
+  edm::EDGetTokenT<std::vector<KFHit>> kfHitToken_;
+
 
   std::vector<const HGCRecHit*> recHitCollection;
   hgcal::RecHitTools rhtools_;
@@ -132,7 +134,8 @@ KFHitProducer::KFHitProducer(const edm::ParameterSet& iConfig)
     theSmootherToken_(esConsumes<TrajectorySmoother,TrajectoryFitter::Record>(iConfig.getParameter<edm::ESInputTag>("Smoother"))),
     caloGeomToken_(esConsumes<CaloGeometry, CaloGeometryRecord>()),
     bfieldtoken_(esConsumes<MagneticField, IdealMagneticFieldRecord>()),
-    DetHGCTrackerToken_(esConsumes<DetHGCTracker, CaloGeometryRecord>()) {
+    DetHGCTrackerToken_(esConsumes<DetHGCTracker, CaloGeometryRecord>()),
+    kfHitToken_(consumes<std::vector<KFHit>>(iConfig.getParameter<edm::InputTag>("KFHits"))) {
 
   // produces<std::vector<KFHit>>("Refit_updated");
   // produces<std::vector<KFHit>>("Refit_forward_predicted");
@@ -228,11 +231,35 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
   bfield_ = iSetup.getHandle(bfieldtoken_);
   auto magneticField = bfield_.product();
 
+  edm::Handle<std::vector<KFHit>> kfhithandle;
+  iEvent.getByToken(kfHitToken_, kfhithandle);
+  auto kfhits = *kfhithandle;
+
+
+  std::map<int,int> seedTrackIdMap;
+  int counter = 0;
+  int prev = -1;
+  for (auto& kfh : kfhits){
+    //hitMap.emplace(hit.detid(), std::make_pair(&hit, lcmask[counter]));
+    if (kfh.trackId != prev){
+      seedTrackIdMap.emplace(counter,kfh.trackId);
+      //std::cout << "seedTrackIdMap: " << counter << ", " << kfh.trackId << std::endl;
+      
+      prev = kfh.trackId;
+      counter++;
+    }
+  }
+
   // ----------
   // Tracks
   // ----------
 
   auto seedingTrack = iEvent.get(seedToken_);
+
+  //std::cout << "HGCALTracks: " <<iEvent.get(tracksToken_).size() << std::endl;
+
+
+  int trackId = 0;
   for (const auto& track : iEvent.get(tracksToken_)) {
 
     // TrackParameters
@@ -259,22 +286,26 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
 
 
+    //std::cout << "Track Momentum: " << track.outerPhi() << std::endl;
+
     TransientTrackingRecHit::ConstRecHitContainer recHitsforReFit;
     auto recHits = track.recHits();
 
     PropagationDirection propagationDirection = alongMomentum;
     int zside = +1;
     auto geomdets = hgcTracker_->getDiskLayers(zside);
+    int counter = 0;
     for (auto& hit : recHits){
       if (hit->rawId() == 0) continue;
       //auto hit = *it;
+      //std::cout << "Hit: " << hit->rawId() << std::endl;
       int layer = rhtools_.getLayerWithOffset(hit->rawId());
-      std::cout << geomdets.size() << ", " << hit->rawId() << ", " << layer-1 << std::endl;
       auto geomdet = geomdets[layer-1]->second;
       auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
       recHitsforReFit.push_back(hgchit);
-      std::cout << rhtools_.getPosition(hit->rawId()).x() << ", " << rhtools_.getPosition(hit->rawId()).y() << ", " << rhtools_.getPosition(hit->rawId()).z() << std::endl;
+      counter++;
     }
+    //std::cout << "Size of RecHits in track: " << counter << std::endl;
 
     // Build first TSOS
     //TSOS firstTSOS = getFirstTSOS();
@@ -296,8 +327,6 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
     */
 
-    std::cout << firstTSOS->globalPosition().x() << ", " << firstTSOS->globalPosition().y() << ", " << firstTSOS->globalPosition().z() << std::endl;
-
     // Make TrajectorySeeds
     TrajectorySeed seed({}, {}, propagationDirection);
 
@@ -312,22 +341,26 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
 
     // Fit Trajectories
     std::vector<Trajectory> trajectories = fitter->fit(seed, recHitsforReFit, *firstTSOS);
-    std::cout << "Size of trajectories: " << trajectories.size() << std::endl;
 
     if (trajectories.size() == 0){
-      std::cout << "No trajectory created!!!!" << std::endl;
+      //std::cout << "No trajectory created!!!!" << std::endl;
+      trackId++;
       continue;
     } 
-    int trackId = 0;
+
+    //std::cout << "Measurements in Refitted trajectory: " << trajectories[0].measurements().size() << std::endl;
     for (auto& tm : trajectories[0].measurements()){
       auto updated_tsos = tm.updatedState();
       auto forward_predicted_tsos = tm.forwardPredictedState();
       auto detid = tm.recHit()->geographicalId();
       int layer = rhtools_.getLayerWithOffset(detid.rawId());
 
-      KFHit* refit_updated_hit = new KFHit(updated_tsos,detid,track,trackId,layer);
-      KFHit* refit_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,trackId,layer);
+      //std::cout << "SeedMap: " << trackId << ", " << seedTrackIdMap[trackId] << std::endl;
 
+      KFHit* refit_updated_hit = new KFHit(updated_tsos,detid,track,seedTrackIdMap[trackId],layer);
+      KFHit* refit_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,seedTrackIdMap[trackId],layer);
+      // KFHit* refit_updated_hit = new KFHit(updated_tsos,detid,track,trackId,layer);
+      // KFHit* refit_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,trackId,layer);
       (*result_refit_updated).push_back(*refit_updated_hit);
       (*result_refit_forward_predicted).push_back(*refit_forward_predicted_hit);
 
@@ -338,9 +371,17 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
       //std::cout << (tm.recHit()->geographicalId().rawId()) << std::endl;
     }
 
-    std::cout << "Smoothe Trajectory" << std::endl;
     auto traj = smoother->trajectories(trajectories[0]);
-    std::cout << "Size of trajectories: " << traj.size() << std::endl;
+    //std::cout << "Creating Smoothed Trajectory" << std::endl;
+
+    if (traj.empty()){
+      //std::cout << "Trajectory is null" << std::endl;
+      trackId++;
+      continue;
+    }
+
+    //std::cout << "Measurements in Smoothed trajectory: " << traj[0].measurements().size() << std::endl;
+
     for (auto& tm : traj[0].measurements()){
       auto updated_tsos = tm.updatedState();
       auto forward_predicted_tsos = tm.forwardPredictedState();
@@ -348,9 +389,13 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
       auto detid = tm.recHit()->geographicalId();
       int layer = rhtools_.getLayerWithOffset(detid.rawId());
 
-      KFHit* smoothed_updated_hit = new KFHit(updated_tsos,detid,track,trackId,layer);
-      KFHit* smoothed_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,trackId,layer);
-      KFHit* smoothed_backward_predicted_hit = new KFHit(backward_predicted_tsos,detid,track,trackId,layer);
+      KFHit* smoothed_updated_hit = new KFHit(updated_tsos,detid,track,seedTrackIdMap[trackId],layer);
+      KFHit* smoothed_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,seedTrackIdMap[trackId],layer);
+      KFHit* smoothed_backward_predicted_hit = new KFHit(backward_predicted_tsos,detid,track,seedTrackIdMap[trackId],layer);
+
+      // KFHit* smoothed_updated_hit = new KFHit(updated_tsos,detid,track,trackId,layer);
+      // KFHit* smoothed_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,trackId,layer);
+      // KFHit* smoothed_backward_predicted_hit = new KFHit(backward_predicted_tsos,detid,track,trackId,layer);
 
       (*result_smoothed_updated).push_back(*smoothed_updated_hit);
       (*result_smoothed_forward_predicted).push_back(*smoothed_forward_predicted_hit);
@@ -361,7 +406,20 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
       // std::cout << tm.forwardPredictedState().globalPosition().x() << ", " << tm.forwardPredictedState().globalPosition().y() << ", " << tm.forwardPredictedState().globalPosition().z() << ", " << std::endl;
       // std::cout << tm.backwardPredictedState().globalPosition().x() << ", " << tm.backwardPredictedState().globalPosition().y() << ", " << tm.backwardPredictedState().globalPosition().z() << ", " << std::endl;
     }
-  }   
+    trackId++;
+  }
+
+  // for (auto& track: iEvent.get(tracksToken_)){
+  //   std::cout << "Track Momentum: " << track.momentum() << std::endl;
+  //   std::cout << "RecHIt Size: " << track.recHitsSize() << std::endl;
+  //   std::cout << "Track Outer Momentum: " << track.outerMomentum() << std::endl;
+  // }
+
+  // for (int idx = 0; idx < 7896; idx++){
+  //   auto range = iEvent.get(tracksToken_)[idx].recHits();
+  //   std::cout << "# Rechits in selected Track " << idx << ": " << std::distance(cbegin(range), cend(range)) << std::endl; 
+  // }
+
   iEvent.put(std::move(result_refit_updated),"RefitUpdated");
   iEvent.put(std::move(result_refit_forward_predicted),"RefitForwardPredicted");
   iEvent.put(std::move(result_smoothed_updated),"SmoothedUpdated");

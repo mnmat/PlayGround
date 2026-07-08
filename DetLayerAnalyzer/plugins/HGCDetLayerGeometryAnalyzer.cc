@@ -154,11 +154,7 @@ HGCDetLayer HGCDetLayerGeometryAnalyzer::buildLayer(const HGCDiskGeomDet* det){
     gdets.push_back(det);
     const std::vector<const GeomDet*> constVectorRef(gdets);
 
-    std::cout << "z GeomDet: " << constVectorRef.front()->surface().position().z() << std::endl;
     const HGCGeomSearchDet hgcsdet(constVectorRef);
-    std::cout << "Done building the HGCGeomSearchDet" << std::endl;
-
-    std::cout << "HGCGeomSearchDet Size of basic components: " << hgcsdet.basicComponents().size() << std::endl;
 
     // Create HGCDetLayer
     std::vector<const HGCGeomSearchDet*> hgcsdets;
@@ -194,32 +190,22 @@ void HGCDetLayerGeometryAnalyzer::analyze(const edm::Event& iEvent, const edm::E
 
   int count = 0;
 
-  std::cout << geomdets.size() << std::endl;
-
   for (const auto& det: geomdets){
       const HGCDiskGeomDet* siDiskGeomDet = det->second; 
       const HGCDiskGeomDet* scDiskGeomDet = det->first; 
       
-      std::cout << siDiskGeomDet->subdet() << ", " << siDiskGeomDet->zside() << ", " << siDiskGeomDet->layer() << std::endl; 
-      std::cout << siDiskGeomDet->surface().position().z() << std::endl;
-
       siDetLayers.emplace_back(buildLayer(siDiskGeomDet));    
 
       if (scDiskGeomDet){
-        std::cout << "Scintillator" << std::endl;
         scDetLayers.emplace_back(buildLayer(scDiskGeomDet));
       }
-      std::cout << "Layer: " << count << std::endl;
     count++;
-    std::cout << "End Loop" << std::endl;
   }
-  std::cout << "Done with Loop" << std::endl;
 
   std::vector<DetLayer*> siLayer;
   std::vector<DetLayer*> scLayer;
 
 
-  std::cout << "Make DetLayers" << std::endl;
   for (std::vector<HGCDetLayer>::const_iterator it = siDetLayers.begin(); it != siDetLayers.end(); it++){
     siLayer.push_back((DetLayer*)(&(*it)));
   }
@@ -227,16 +213,11 @@ void HGCDetLayerGeometryAnalyzer::analyze(const edm::Event& iEvent, const edm::E
   for (std::vector<HGCDetLayer>::const_iterator it = scDetLayers.begin(); it != scDetLayers.end(); it++){
     scLayer.push_back((DetLayer*)(&(*it)));
   }
-  std::cout << "Done Making DetLayers" << std::endl;
 
   
   HGCDetLayerGeometry hgcgeom = HGCDetLayerGeometry();
   hgcgeom.addSiLayers(siLayer);
   hgcgeom.addScintillatorLayers(scLayer);
-
-  std::cout << siDetLayers.size() << std::endl;
-  std::cout << scDetLayers.size() << std::endl;
-
   
 //   auto dets = geomdets.front();
 

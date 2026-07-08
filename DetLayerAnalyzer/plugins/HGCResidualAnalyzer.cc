@@ -314,7 +314,6 @@ TransientTrackingRecHit::ConstRecHitContainer HGCRefitAnalyzer::getTransientRecH
 
 // ------------ method called for each event  ------------
 void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
-  std::cout << "Hello" << std::endl;
 
   using namespace edm;
 
@@ -349,11 +348,6 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
   // Tracks
   // ----------
 
-
-  std::cout << "---------------------" << std::endl;
-  std::cout << "Tracks" << std::endl;
-  std::cout << "---------------------" << std::endl;
-
   auto seedingTrack = iEvent.get(seedToken_);
   for (const auto& track : iEvent.get(tracksToken_)) {
 
@@ -363,7 +357,6 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     //printTrackExtraParameters(track);
 
     // Build TransientTrack (link with magnetic field )
-    std::cout << "Build Transient Track" << std::endl;
     reco::TransientTrack ttrack(track, magneticField);
 
     // Build transient RecHits
@@ -380,30 +373,19 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
       auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
       */
 
-
-
-    std::cout << "Build Transient RecHits for Refit" << std::endl;
     TransientTrackingRecHit::ConstRecHitContainer recHitsforReFit;
     auto recHits = track.recHits();
 
     PropagationDirection propagationDirection = alongMomentum;
     int zside = +1;
     auto geomdets = hgcTracker_->getDiskLayers(zside);
-    std::cout << "Start Loop" << std::endl;
     for (auto& hit : recHits){
       if (hit->rawId() == 0) continue;
       //auto hit = *it;
-      std::cout << "Get Layer" << std::endl;
       int layer = rhtools_.getLayerWithOffset(hit->rawId());
-      std::cout << "Get GeomDet" << std::endl;
-      std::cout << geomdets.size() << ", " << hit->rawId() << ", " << layer-1 << std::endl;
       auto geomdet = geomdets[layer-1]->second;
-      std::cout << "Build TransientTrackingrecHit" << std::endl;
       auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
-      std::cout << "Pushback" << std::endl;
       recHitsforReFit.push_back(hgchit);
-      std::cout << rhtools_.getPosition(hit->rawId()).x() << ", " << rhtools_.getPosition(hit->rawId()).y() << ", " << rhtools_.getPosition(hit->rawId()).z() << std::endl;
-      std::cout << "Done with one iteration" << std::endl;
     }
 
   
@@ -413,14 +395,10 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     //
 
 
-    std::cout << "Create FreeTrajectoryState" << std::endl;
     FreeTrajectoryState fts = trajectoryStateTransform::innerFreeState(track,magneticField);
-    std::cout << "Done creating FreeTrajectoryState" << std::endl;
     auto surface = hgcTracker_->firstDisk(zside,propagationDirection)->second->surface();
-    std::cout << "Make first TSOS" << std::endl;
     TrajectoryStateOnSurface* firstTSOS = new TrajectoryStateOnSurface(fts,surface);
     //firstTSOS = TrajectoryStateOnSurface();
-    std::cout << "done making first TSOS" << std::endl;
 
 
     /*
@@ -434,11 +412,7 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
 
     */
 
-    std::cout << "Trying to std out " << std::endl;
-    std::cout << firstTSOS->globalPosition().x() << ", " << firstTSOS->globalPosition().y() << ", " << firstTSOS->globalPosition().z() << std::endl;
-
     // Make TrajectorySeeds
-    std::cout << "Make TrajectorySeeds" << std::endl;
     TrajectorySeed seed({}, {}, propagationDirection);
 
     // Can I create a trajectoryMeasurement from a DetLayer?
@@ -451,43 +425,21 @@ void HGCRefitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     // Can I create a DetLayer from HGCDiskGeomDet
 
     // Fit Trajectories
-    std::cout << "Fit Trajectory" << std::endl;
     std::vector<Trajectory> trajectories = fitter->fit(seed, recHitsforReFit, *firstTSOS);
-    std::cout << "Size of trajectories: " << trajectories.size() << std::endl;
 
     for (auto& tm : trajectories[0].measurements()){
       tm.layer();
-      std::cout << tm.updatedState().globalPosition().x() << ", " << tm.updatedState().globalPosition().y() << ", " << tm.updatedState().globalPosition().z() << ", " << std::endl;
-      std::cout << tm.predictedState().globalPosition().x() << ", " << tm.predictedState().globalPosition().y() << ", " << tm.predictedState().globalPosition().z() << ", " << std::endl;
-      std::cout << tm.forwardPredictedState().globalPosition().x() << ", " << tm.forwardPredictedState().globalPosition().y() << ", " << tm.forwardPredictedState().globalPosition().z() << ", " << std::endl;
-      //std::cout << tm.backwardPredictedState().globalPosition().x() << ", " << tm.backwardPredictedState().globalPosition().y() << ", " << tm.backwardPredictedState().globalPosition().z() << ", " << std::endl;
-
-      std::cout << (tm.recHit()->geographicalId().rawId()) << std::endl;
     }
 
-    std::cout << "Smoothe Trajectory" << std::endl;
     auto traj = smoother->trajectories(trajectories[0]);
-    std::cout << "Size of trajectories: " << traj.size() << std::endl;
     for (auto& tm : traj[0].measurements()){
       tm.layer();
-      std::cout << tm.updatedState().globalPosition().x() << ", " << tm.updatedState().globalPosition().y() << ", " << tm.updatedState().globalPosition().z() << ", " << std::endl;
-      std::cout << tm.predictedState().globalPosition().x() << ", " << tm.predictedState().globalPosition().y() << ", " << tm.predictedState().globalPosition().z() << ", " << std::endl;
-      std::cout << tm.forwardPredictedState().globalPosition().x() << ", " << tm.forwardPredictedState().globalPosition().y() << ", " << tm.forwardPredictedState().globalPosition().z() << ", " << std::endl;
-      std::cout << tm.backwardPredictedState().globalPosition().x() << ", " << tm.backwardPredictedState().globalPosition().y() << ", " << tm.backwardPredictedState().globalPosition().z() << ", " << std::endl;
-
-      std::cout << (tm.recHit()->geographicalId().rawId()) << std::endl;
     }
 
 
     // Residuals
 
     auto res = trajectoryToResiduals(traj[0]);
-    
-    for (int i = 0; i<int(recHitsforReFit.size());i++){
-      std::cout << res.residualX(i) << std::endl; 
-    }
-
-    std::cout << "Done Fitting" << std::endl;
     //std::cout << "Number of Trajectories: " << trajectories.size() << std::endl;
 
     //for (auto& traj: trajectories){

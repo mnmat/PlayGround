@@ -19,16 +19,12 @@ HGCDetLayer::HGCDetLayer(const std::vector<const HGCGeomSearchDet*>& sectors)
     : ForwardDetLayer(false), theSectors(sectors), theComponents(theSectors.begin(), theSectors.end()) {
   // Initial values for R, Z and Phi bounds
 
-  std::cout << "Entered constructor" << std::endl;
-  std::cout << sectors.front()->basicComponents().front()->position().z() << std::endl;
-
   //float theRmin = sectors.front()->rmin();
   float theRmin = sectors.front()->basicComponents().front()->position().perp();
   float theRmax = theRmin;
   float theZmin = sectors.front()->position().z();
   float theZmax = theZmin;
 
-  std::cout << "Done setting variables" << std::endl;
 
 
   // Cache chamber pointers (the basic components_)
@@ -45,8 +41,6 @@ HGCDetLayer::HGCDetLayer(const std::vector<const HGCGeomSearchDet*>& sectors)
     theZmax = max(theZmax, zCenter + halfThick);
   }
 
-  std::cout << "Done with loop" << std::endl;
-
   // Build surface
 
   float zPos = (theZmax + theZmin) / 2.;
@@ -54,8 +48,6 @@ HGCDetLayer::HGCDetLayer(const std::vector<const HGCGeomSearchDet*>& sectors)
   RotationType rot;
 
   setSurface(new BoundDisk(pos, rot, new SimpleDiskBounds(theRmin, theRmax, theZmin - zPos, theZmax - zPos)));
-
-  std::cout << "Done Building surface" << std::endl;
 
   LogTrace("HGCDetLayers") << "Constructing HGCDetLayer: " << std::fixed << std::setw(14)
                            << basicComponents().size() << " Dets, " << std::setw(14) << theSectors.size()

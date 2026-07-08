@@ -56,13 +56,13 @@ namespace {
 
     GlobalVector pos(rmed * cos(phiPos), rmed * sin(phiPos), zPos);
 
-    std::cout << "GeomDet: " << "MTDDiskBuilderFromDet::computeBounds sector at: " << std::fixed << pos << "\n"
-                             << "zmin    : " << std::setw(14) << zmin << "\n"
-                             << "zmax    : " << std::setw(14) << zmax << "\n"
-                             << "rmin    : " << std::setw(14) << rmin << "\n"
-                             << "rmax    : " << std::setw(14) << rmax << "\n"
-                             << "phi ref : " << std::setw(14) << phiPos << "\n"
-                             << "phi win : " << std::setw(14) << phiWin << std::endl;
+    // std::cout << "GeomDet: " << "MTDDiskBuilderFromDet::computeBounds sector at: " << std::fixed << pos << "\n"
+    //                          << "zmin    : " << std::setw(14) << zmin << "\n"
+    //                          << "zmax    : " << std::setw(14) << zmax << "\n"
+    //                          << "rmin    : " << std::setw(14) << rmin << "\n"
+    //                          << "rmax    : " << std::setw(14) << rmax << "\n"
+    //                          << "phi ref : " << std::setw(14) << phiPos << "\n"
+    //                          << "phi win : " << std::setw(14) << phiWin << std::endl;
 
     return std::make_pair(new SimpleDiskBounds(rmin, rmax, zmin - zPos, zmax - zPos), pos);
   }

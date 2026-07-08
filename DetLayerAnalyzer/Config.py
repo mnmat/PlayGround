@@ -37,7 +37,7 @@ output_dir = sys.argv[6]
 rescale = float(sys.argv[7])
 mb = "mb_ngun"
 cap = "zpos"
-generator = "flatPtGun"
+generator = sys.argv[8]
 
 output_dir = output_dir + "/" + cap + "/n" + nevents +  "/Eta_" + eta + "/singlemuon_" + generator  + "_hgcalCenter/step3/"
 if not os.path.exists(output_dir):
@@ -93,18 +93,31 @@ process.dummyGeometry = cms.ESProducer("DummyGeometryESProducer")
 #    tracks =  cms.untracked.InputTag('generalTracks'),
 #)
 
+from SimG4Core.Application.g4SimHits_cfi import g4SimHits as _g4SimHits
+
+process.load("TrackPropagation.Geant4e.Geant4ePropagator_cfi")
+process.geopro = cms.EDProducer("GeometryProducer",
+     GeoFromDD4hep = cms.bool(False),
+     UseMagneticField = cms.bool(True),
+     UseSensitiveDetectors = cms.bool(False),
+     MagneticField =  _g4SimHits.MagneticField.clone()
+)
+
+from Configuration.ProcessModifiers.dd4hep_cff import dd4hep
+dd4hep.toModify(process.geopro, GeoFromDD4hep = True )
+
 process.kfrefitter = cms.ESProducer( "KFTrajectoryFitterESProducer",
   appendToDataLabel = cms.string( "" ),
   ComponentName = cms.string( "testReFitter" ),
   RecoGeometry = cms.string( "DummyGeometry" ),
-  #Propagator = cms.string("RungeKuttaTrackerPropagator")
+  #Propagator = cms.string("Geant4ePropagator")
 )
 
 process.kfsmoother = cms.ESProducer("KFTrajectorySmootherESProducer",
   ComponentName = cms.string("testSmoother"),
   RecoGeometry = cms.string("DummyGeometry"),
   errorRescaling = cms.double(rescale),
-  #Propagator = cms.string("RungeKuttaTrackerPropagator")
+  #Propagator = cms.string("Geant4ePropagator")
 )
 
 #process.testTrackAnalyzer = cms.EDAnalyzer('TestTrackAnalyzer',
@@ -134,7 +147,8 @@ process.kfhitproducer = cms.EDProducer("KFHitProducer",
    HGCFHInput =  cms.InputTag("HGCalRecHit", "HGCHEFRecHits"),
    HGCBHInput =  cms.InputTag("HGCalRecHit", "HGCHEBRecHits"),
    Fitter = cms.ESInputTag('','testReFitter'),
-   Smoother = cms.ESInputTag('','testSmoother')
+   Smoother = cms.ESInputTag('','testSmoother'),
+   KFHits = cms.InputTag("ticlTrackstersKalmanFilter","KFHits","RECO"),
 )
 
 process.prophitproducer = cms.EDProducer("KFHitProducer",
@@ -145,7 +159,8 @@ process.prophitproducer = cms.EDProducer("KFHitProducer",
    HGCFHInput =  cms.InputTag("HGCalRecHit", "HGCHEFRecHits"),
    HGCBHInput =  cms.InputTag("HGCalRecHit", "HGCHEBRecHits"),
    Fitter = cms.ESInputTag('','testReFitter'),
-   Smoother = cms.ESInputTag('','testSmoother')
+   Smoother = cms.ESInputTag('','testSmoother'),
+   KFHits = cms.InputTag("ticlTrackstersStandalonePropagator","KFHits","RECO"),
 )
 
 
@@ -270,7 +285,7 @@ process.residuals = cms.EDAnalyzer('HGCResidualAnalyzer',
    Smoother = cms.ESInputTag('','testSmoother')
 )
 
-process.p = cms.Path(process.kfhitproducer*process.prophitproducer*process.ntuplizer*process.efficiencyAnalyzer*process.pcalohitAnalyzer*process.residuals)
-
+process.p = cms.Path(process.geopro*process.kfhitproducer*process.prophitproducer*process.ntuplizer*process.efficiencyAnalyzer*process.pcalohitAnalyzer*process.residuals)
+#process.p = cms.Path(process.geopro*process.kfhitproducer*process.prophitproducer*process.ntuplizer*process.efficiencyAnalyzer)
 
 process.add_(cms.Service("AdaptorConfig", native=cms.untracked.vstring("root")))

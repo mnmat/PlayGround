@@ -52,7 +52,6 @@ std::unique_ptr<DetLayerGeometry> DummyGeometryESProducer::produce(const RecoGeo
   //const std::string metname = "Muon|RecoMuon|RecoMuonDetLayers|DummyGeometryESProducer";
   const HGCDetLayerGeometry& hgcDetLayerGeometry = iRecord.get(hgcDetLayerGeometryToken_);
   auto dummyGeometry = std::make_unique<DetLayerGeometry>(hgcDetLayerGeometry);
-  std::cout << "Done with ESProducer" << std::endl;
 
   return dummyGeometry;
 }

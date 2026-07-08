@@ -65,9 +65,6 @@ std::pair<std::vector<DetLayer*>, std::vector<DetLayer*>> HGCDetLayerGeometryESP
     const HGCDiskGeomDet* siDiskGeomDet = det->second; 
     const HGCDiskGeomDet* scDiskGeomDet = det->first; 
     
-    std::cout << siDiskGeomDet->subdet() << ", " << siDiskGeomDet->zside() << ", " << siDiskGeomDet->layer() << std::endl; 
-    std::cout << siDiskGeomDet->surface().position().z() << std::endl;
-
     siDetLayers.push_back(new HGCDetLayer(buildLayer(siDiskGeomDet)));    
 
     if (scDiskGeomDet){
@@ -94,11 +91,7 @@ HGCDetLayer HGCDetLayerGeometryESProducer::buildLayer(const HGCDiskGeomDet* det)
     gdets.push_back(det);
     const std::vector<const GeomDet*> constVectorRef(gdets);
 
-    std::cout << "z GeomDet: " << constVectorRef.front()->surface().position().z() << std::endl;
     const HGCGeomSearchDet hgcsdet(constVectorRef);
-    std::cout << "Done building the HGCGeomSearchDet" << std::endl;
-
-    std::cout << "HGCGeomSearchDet Size of basic components: " << hgcsdet.basicComponents().size() << std::endl;
 
     // Create HGCDetLayer
     std::vector<const HGCGeomSearchDet*> hgcsdets;
@@ -114,12 +107,6 @@ std::unique_ptr<HGCDetLayerGeometry> HGCDetLayerGeometryESProducer::produce(cons
 
   // Build HGCDetLayers
   std::pair<std::vector<DetLayer*>, std::vector<DetLayer*>> layers = buildLayers(hgcTracker_);
-
-  std::cout << (layers.first).size() << std::endl;
-  std::cout << (layers.second).size() << std::endl;
-
-  std::cout << "Fill Layers" << std::endl;
-  
   
   int i = 5;
   int* stack_pointer = &i;
@@ -130,8 +117,6 @@ std::unique_ptr<HGCDetLayerGeometry> HGCDetLayerGeometryESProducer::produce(cons
   hgcDetLayerGeometry->addSiLayers(layers.first);
   hgcDetLayerGeometry->addScintillatorLayers(layers.second);
   
-  std::cout << "Done with ESProducer" << std::endl;
-
   // 
   // // Build DT layers
   // if (auto dt = record.getHandle(dtToken_)) {

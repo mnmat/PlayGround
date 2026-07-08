@@ -13,13 +13,11 @@
 HGCGeomSearchDet::HGCGeomSearchDet(std::vector<const GeomDet*>::const_iterator first,
                            std::vector<const GeomDet*>::const_iterator last)
     : GeometricSearchDet(false), theDets(first, last) {
-  std::cout << "HGCGeomSearchDet: Initialize w. Iterator" << std::endl;
   init();
 }
 
 HGCGeomSearchDet::HGCGeomSearchDet(const std::vector<const GeomDet*>& vdets)
     : GeometricSearchDet(false), theDets(vdets) {
-  std::cout << "HGCGeomSearchDet: Initialize" << std::endl;
   init();
 }
 

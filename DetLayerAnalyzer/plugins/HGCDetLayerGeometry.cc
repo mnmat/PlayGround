@@ -44,7 +44,6 @@ void HGCDetLayerGeometry::addScintillatorLayers(const std::vector<DetLayer*>& de
 DetId HGCDetLayerGeometry::makeSiDetLayerId(const DetLayer* detLayer, const int layer) const{
     auto dtype = (layer < 27)? DetId::HGCalEE:DetId::HGCalHSi;// HGCalEE or HGCalHSi 
     auto test = (detLayer->basicComponents().front()->position().z() > 0)? 1:0;// z-side, +1 or -1
-    std::cout << "Basic Components:" << detLayer->basicComponents().front()->position().z() << std::endl;
     int zp = 1;
     return HGCSiliconDetId(dtype,zp,2,layer,0,0,0,0);
 }

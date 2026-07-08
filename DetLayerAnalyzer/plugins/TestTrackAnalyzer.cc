@@ -127,14 +127,8 @@ TestTrackAnalyzer::~TestTrackAnalyzer() {
 
 // ------------ method called for each event  ------------
 void TestTrackAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
-  std::cout << "Hello" << std::endl;
 
   using namespace edm;
-
-  
-  for (const auto& track : iEvent.get(tracksToken_)) {
-    std::cout << "Hello" << std::endl;
-  }
 
 #ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
   // if the SetupData is always needed

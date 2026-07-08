@@ -6,12 +6,16 @@
 
 # Set input variables
 cap="zpos"
-root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/Rk_Rx2/0_PU/"
+root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/RK_Rx/0_PU/"
+root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Geant4ePropagator/Geant4ePropagator/0_PU/"
+#root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/DebugLowEfficiency/200_PU/"
+root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.2/Purity//0_PU"
+root="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.2/Scan/0_PU"
 particles="singlemuon"
-producer="flatEGun"
+generator="flatPtGun"
 position="hgcalCenter"
-tevts=500 # Number of total events
-fevts=100 # Number of events per file
+tevts=10000 # Number of total events
+fevts=1000 # Number of events per file
 end=$((tevts/fevts))
 
 gf="files.txt"
@@ -19,21 +23,23 @@ rm $gf
 touch $gf
 
 
-for xi in 1 2 5 10 15 20 100
+for xi in 5
 do
 # Create txt file
     #f="files_"$xi".txt"
     #rm $f
     #touch $f
-    outdir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Trajectories/Rk_Rx2/x"$xi"/0_PU/"
-    for eta in 17
+    #outdir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/mmatthew/PatternRecognitionByKalmanFilter/CMSSW_14_1_0_pre2/KFv0.1/Geant4ePropagator/RungeKutta/0_PU/Smoothing_G4ePropagator/x"$xi"/0_PU/"
+    outdir=$root"Scan/x"$xi
+    outdir=$root
+    for eta in 17 19 21 23 25 27
     do
-        for energy in 10 100
+        for energy in 3 5 10 15 20 50 100
         do
             for i in $(seq 1 $end)
             do
                 #echo "$eta, $energy, $fevts, $i, $root, $outdir, $xi" >> $f
-                echo "$eta, $energy, $fevts, $i, $root, $outdir, $xi" >> $gf
+                echo "$eta,$energy,$fevts,$i,$root,$outdir,$xi,$generator" >> $gf
             done
         done
     done

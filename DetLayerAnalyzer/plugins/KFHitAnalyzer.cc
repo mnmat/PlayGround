@@ -100,10 +100,6 @@ void KFHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
   iEvent.getByToken(kfHitToken_, kfhithandle);
   auto kfhits = *kfhithandle;
 
-  for (const auto& hit : kfhits){
-    std::cout << hit.xx << std::endl;
-  }
-
 #ifdef THIS_IS_AN_EVENTSETUP_EXAMPLE
   // if the SetupData is always needed
   auto setup = iSetup.getData(setupToken_);

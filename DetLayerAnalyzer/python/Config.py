@@ -72,15 +72,19 @@ process.dummyGeometry = cms.ESProducer("DummyGeometryESProducer")
 #    tracks =  cms.untracked.InputTag('generalTracks'),
 #)
 
+#process.load("TrackPropagation.Geant4e.Geant4ePropagator_cfi")
+
 process.kfrefitter = cms.ESProducer( "KFTrajectoryFitterESProducer",
   appendToDataLabel = cms.string( "" ),
   ComponentName = cms.string( "testReFitter" ),
-  RecoGeometry = cms.string( "DummyGeometry" )
+  RecoGeometry = cms.string( "DummyGeometry" ),
+  #Propagator = cms.string("Geant4ePropagator")
 )
 
 process.kfsmoother = cms.ESProducer("KFTrajectorySmootherESProducer",
   ComponentName = cms.string("testSmoother"),
-  RecoGeometry = cms.string("DummyGeometry")
+  RecoGeometry = cms.string("DummyGeometry"),
+  #Propagator = cms.string("Geant4ePropagator")
 )
 
 #process.testTrackAnalyzer = cms.EDAnalyzer('TestTrackAnalyzer',
