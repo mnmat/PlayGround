@@ -271,7 +271,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
-    //pcalo_parentID.push_back(pCaloHit.getParentID());
+    pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
     auto detid = pCaloHit.id();
@@ -289,7 +289,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
-    //pcalo_parentID.push_back(pCaloHit.getParentID());
+    pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
 
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
@@ -307,7 +307,7 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
-    //pcalo_parentID.push_back(pCaloHit.getParentID());
+    pcalo_parentID.push_back(pCaloHit.getParentID());
     pcalo_evt.push_back(eventnr);
     //std::cout << "DetIdPosition: " << geom.idToDet(pSimHit.detUnitId())->position() << std::endl;
     auto detid = pCaloHit.id();
