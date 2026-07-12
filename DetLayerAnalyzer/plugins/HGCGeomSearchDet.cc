@@ -1,6 +1,6 @@
 #include "PlayGround/DetLayerAnalyzer/plugins/HGCGeomSearchDet.h"
 #include "PlayGround/DetLayerAnalyzer/plugins/HGCGeomSearchDetBuilderFromDet.h"
-#include "Geometry/CommonDetUnit/interface/GeomDet.h"
+#include "Geometry/CommonTopologies/interface/GeomDet.h"
 #include "DataFormats/GeometrySurface/interface/RectangularPlaneBounds.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "TrackingTools/GeomPropagators/interface/Propagator.h"

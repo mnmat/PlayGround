@@ -2,7 +2,8 @@
 
 #include "PlayGround/DetLayerAnalyzer/plugins/HGCDetLayer.h"
 #include "PlayGround/DetLayerAnalyzer/plugins/HGCGeomSearchDet.h"
-#include <Geometry/CommonDetUnit/interface/GeomDet.h>
+//#include <Geometry/CommonDetUnit/interface/GeomDet.h>
+#include <Geometry/CommonTopologies/interface/GeomDet.h>
 #include <DataFormats/GeometrySurface/interface/DiskSectorBounds.h>
 #include <TrackingTools/GeomPropagators/interface/Propagator.h>
 #include <TrackingTools/DetLayers/interface/MeasurementEstimator.h>

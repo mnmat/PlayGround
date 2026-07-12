@@ -262,12 +262,15 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
   
   //std::cout << "Detid,TrackId, x, y, z" << std::endl;
 
+
+  std::cout << "Event: " << eventnr << std::endl;
   for (const auto& pCaloHit : iEvent.get(pCaloHitEEToken_)){
     //std::cout << pCaloHit.id() << "," << pCaloHit.geantTrackId() << ","<< pCaloHit.getPosition().x()<< ","<< pCaloHit.getPosition().y()<< ","<< pCaloHit.getPosition().z() << std::endl;
     
     pcalo_x.push_back(pCaloHit.getPosition().x());
     pcalo_y.push_back(pCaloHit.getPosition().y());
     pcalo_z.push_back(pCaloHit.getPosition().z());
+    std::cout << "Get Position" << std::endl;
     pcalo_e.push_back(pCaloHit.energy());
     pcalo_layer.push_back(recHitTools_.getLayerWithOffset(pCaloHit.id()));
     pcalo_detid.push_back(pCaloHit.id());
@@ -330,8 +333,8 @@ void PCaloHitAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& 
 
     for (const auto& it_simc : simclusters){
       const SimCluster& simc = (*(it_simc));
-      const auto& sc_hae = simc.hits_and_energies();
-      for (const auto& it_sc_hae : sc_hae){
+      const auto& sc_haf = simc.hits_and_fractions();
+      for (const auto& it_sc_haf : sc_haf){
         // Characterize RecHit
         //DetId detid_ = (it_sc_hae.first);
         counter++;

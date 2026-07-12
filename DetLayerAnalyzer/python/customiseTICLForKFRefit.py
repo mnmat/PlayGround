@@ -142,39 +142,39 @@ def customiseTICLForKFRefit(process):
 
     process.ntuplizer_refit = cms.Sequence(process.ntuplizerRefitForwardPredicted+process.ntuplizerRefitUpdated+process.ntuplizerSmoothedUpdated+process.ntuplizerSmoothedForwardPredicted+process.ntuplizerSmoothedBackwardPredicted )
 
-    from Analyzers.EfficiencyAnalyzerDemo.EfficiencyAnalyzerDemo_cfi import efficiencyAnalyzerDemo
+    # from Analyzers.EfficiencyAnalyzerDemo.EfficiencyAnalyzerDemo_cfi import efficiencyAnalyzerDemo
 
-    process.efficiencyAnalyzerRefitUpdated = efficiencyAnalyzerDemo.clone(
-        KFHits = cms.InputTag("kfhitproducer","RefitUpdated"),
-        tracks    = cms.untracked.InputTag('generalTracks'),
-        associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
-    )
+    # process.efficiencyAnalyzerRefitUpdated = efficiencyAnalyzerDemo.clone(
+    #     KFHits = cms.InputTag("kfhitproducer","RefitUpdated"),
+    #     tracks    = cms.untracked.InputTag('generalTracks'),
+    #     associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
+    # )
 
-    process.efficiencyAnalyzerRefitForwardPredicted = efficiencyAnalyzerDemo.clone(
-        KFHits = cms.InputTag("kfhitproducer","RefitForwardPredicted"),
-        tracks    = cms.untracked.InputTag('generalTracks'),
-        associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
-    )
+    # process.efficiencyAnalyzerRefitForwardPredicted = efficiencyAnalyzerDemo.clone(
+    #     KFHits = cms.InputTag("kfhitproducer","RefitForwardPredicted"),
+    #     tracks    = cms.untracked.InputTag('generalTracks'),
+    #     associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
+    # )
 
-    process.efficiencyAnalyzerSmoothedForwardPredicted = efficiencyAnalyzerDemo.clone(
-        KFHits = cms.InputTag("kfhitproducer","SmoothedForwardPredicted"),
-        tracks    = cms.untracked.InputTag('generalTracks'),
-        associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
-    )
+    # process.efficiencyAnalyzerSmoothedForwardPredicted = efficiencyAnalyzerDemo.clone(
+    #     KFHits = cms.InputTag("kfhitproducer","SmoothedForwardPredicted"),
+    #     tracks    = cms.untracked.InputTag('generalTracks'),
+    #     associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
+    # )
 
-    process.efficiencyAnalyzerSmoothedBackwardPredicted = efficiencyAnalyzerDemo.clone(
-        KFHits = cms.InputTag("kfhitproducer","SmoothedBackwardPredicted"),
-        tracks    = cms.untracked.InputTag('generalTracks'),
-        associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
-    )
+    # process.efficiencyAnalyzerSmoothedBackwardPredicted = efficiencyAnalyzerDemo.clone(
+    #     KFHits = cms.InputTag("kfhitproducer","SmoothedBackwardPredicted"),
+    #     tracks    = cms.untracked.InputTag('generalTracks'),
+    #     associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
+    # )
 
-    process.efficiencyAnalyzerSmoothedUpdated = efficiencyAnalyzerDemo.clone(
-        KFHits = cms.InputTag("kfhitproducer","SmoothedUpdated"),
-        tracks    = cms.untracked.InputTag('generalTracks'),
-        associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
-    )
+    # process.efficiencyAnalyzerSmoothedUpdated = efficiencyAnalyzerDemo.clone(
+    #     KFHits = cms.InputTag("kfhitproducer","SmoothedUpdated"),
+    #     tracks    = cms.untracked.InputTag('generalTracks'),
+    #     associators = cms.untracked.VInputTag("trackingParticleRecoTrackAsssociation")
+    # )
 
-    process.efficiencyAnalyzer_refit = cms.Sequence(process.efficiencyAnalyzerRefitForwardPredicted+process.efficiencyAnalyzerRefitUpdated+process.efficiencyAnalyzerSmoothedUpdated+process.efficiencyAnalyzerSmoothedForwardPredicted+process.efficiencyAnalyzerSmoothedBackwardPredicted )
+    # process.efficiencyAnalyzer_refit = cms.Sequence(process.efficiencyAnalyzerRefitForwardPredicted+process.efficiencyAnalyzerRefitUpdated+process.efficiencyAnalyzerSmoothedUpdated+process.efficiencyAnalyzerSmoothedForwardPredicted+process.efficiencyAnalyzerSmoothedBackwardPredicted )
 
     from PlayGround.PCaloHitAnalyzer.customiseTICLForPCaloHitAnalyzer import customiseTICLForPCaloHitAnalyzer
     process = customiseTICLForPCaloHitAnalyzer(process)
@@ -190,7 +190,7 @@ def customiseTICLForKFRefit(process):
         Smoother = cms.ESInputTag('','testSmoother')
     )
 
-    process.refit_path = cms.Sequence(process.kfhitproducer*process.prophitproducer*process.ntuplizer_refit*process.efficiencyAnalyzer_refit)
+    process.refit_path = cms.Sequence(process.kfhitproducer*process.prophitproducer*process.ntuplizer_refit)#*process.efficiencyAnalyzer_refit)
     #process.add_(cms.Service("AdaptorConfig", native=cms.untracked.vstring("root")))
 
     return process
