@@ -292,7 +292,8 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     auto recHits = track.recHits();
 
     PropagationDirection propagationDirection = alongMomentum;
-    int zside = +1;
+    int zside = track.momentum().eta() > 0 ? +1 : -1;
+    //int zside = +1;
     auto geomdets = hgcTracker_->getDiskLayers(zside);
     int counter = 0;
     for (auto& hit : recHits){
