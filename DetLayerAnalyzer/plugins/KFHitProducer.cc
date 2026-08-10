@@ -110,6 +110,8 @@ private:
   hgcal::RecHitTools rhtools_;
   const DetHGCTracker* hgcTracker_;
 
+  bool doBackwardPropagation_;
+
 };
 
 //
@@ -135,7 +137,8 @@ KFHitProducer::KFHitProducer(const edm::ParameterSet& iConfig)
     caloGeomToken_(esConsumes<CaloGeometry, CaloGeometryRecord>()),
     bfieldtoken_(esConsumes<MagneticField, IdealMagneticFieldRecord>()),
     DetHGCTrackerToken_(esConsumes<DetHGCTracker, CaloGeometryRecord>()),
-    kfHitToken_(consumes<std::vector<KFHit>>(iConfig.getParameter<edm::InputTag>("KFHits"))) {
+    kfHitToken_(consumes<std::vector<KFHit>>(iConfig.getParameter<edm::InputTag>("KFHits"))),
+    doBackwardPropagation_(iConfig.getParameter<bool>("doBackwardPropagation")) {
 
   // produces<std::vector<KFHit>>("Refit_updated");
   // produces<std::vector<KFHit>>("Refit_forward_predicted");
@@ -291,7 +294,13 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     TransientTrackingRecHit::ConstRecHitContainer recHitsforReFit;
     auto recHits = track.recHits();
 
-    PropagationDirection propagationDirection = alongMomentum;
+    PropagationDirection propagationDirection;
+    if (doBackwardPropagation_){
+      propagationDirection = oppositeToMomentum;
+    } else {
+      propagationDirection = alongMomentum;
+    }
+
     int zside = track.momentum().eta() > 0 ? +1 : -1;
     //int zside = +1;
     auto geomdets = hgcTracker_->getDiskLayers(zside);
@@ -312,7 +321,12 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     //TSOS firstTSOS = getFirstTSOS();
     //
 
-    FreeTrajectoryState fts = trajectoryStateTransform::innerFreeState(track,magneticField);
+    FreeTrajectoryState fts;
+    if (doBackwardPropagation_){
+      fts = trajectoryStateTransform::outerFreeState(track,magneticField);
+    } else {
+      fts = trajectoryStateTransform::innerFreeState(track,magneticField);
+    }
     auto surface = hgcTracker_->firstDisk(zside,propagationDirection)->second->surface();
     TrajectoryStateOnSurface* firstTSOS = new TrajectoryStateOnSurface(fts,surface);
     //firstTSOS = TrajectoryStateOnSurface();
