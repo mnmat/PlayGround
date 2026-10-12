@@ -87,6 +87,7 @@ def customiseTICLForKFRefit(process):
         Fitter = cms.ESInputTag('','testReFitter'),
         Smoother = cms.ESInputTag('','testSmoother'),
         KFHits = cms.InputTag("ticlTrackstersKalmanFilter","KFHits","RECO"),
+        doBackwardPropagation = cms.bool(False)
     )
 
     process.prophitproducer = cms.EDProducer("KFHitProducer",
@@ -99,6 +100,7 @@ def customiseTICLForKFRefit(process):
         Fitter = cms.ESInputTag('','testReFitter'),
         Smoother = cms.ESInputTag('','testSmoother'),
         KFHits = cms.InputTag("ticlTrackstersStandalonePropagator","KFHits","RECO"),
+        doBackwardPropagation = cms.bool(False)
     )
 
     process.kfhitanalyzer = cms.EDAnalyzer("KFHitAnalyzer",

@@ -307,12 +307,23 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     int counter = 0;
     for (auto& hit : recHits){
       if (hit->rawId() == 0) continue;
+      auto testgeom = static_cast<const HGCalGeometry*>(rhtools_.getSubdetectorGeometry(hit->rawId()));
+      if (testgeom->present(hit->rawId())){
+        int layer = rhtools_.getLayerWithOffset(hit->rawId());
+        std::cout << "Found layer: " << layer << std::endl;
+        auto geomdet = geomdets[layer-1]->second;
+        auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
+        recHitsforReFit.push_back(hgchit);
+      }
+      else {
       //auto hit = *it;
-      //std::cout << "Hit: " << hit->rawId() << std::endl;
-      int layer = rhtools_.getLayerWithOffset(hit->rawId());
-      auto geomdet = geomdets[layer-1]->second;
-      auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
-      recHitsforReFit.push_back(hgchit);
+        std::cout << hit->valid << std::endl;
+        int layer = HGCDiskGeomDet::layerFromRawId(hit->rawId());
+        std::cout << "Found layer: " << layer << std::endl;
+        auto geomdet = geomdets[layer-1]->second;
+        auto hgchit = HGCTransientTrackingRecHit::specificBuild(geomdet, hit);
+        recHitsforReFit.push_back(hgchit);
+      }
       counter++;
     }
     //std::cout << "Size of RecHits in track: " << counter << std::endl;
@@ -321,12 +332,15 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     //TSOS firstTSOS = getFirstTSOS();
     //
 
-    FreeTrajectoryState fts;
-    if (doBackwardPropagation_){
-      fts = trajectoryStateTransform::outerFreeState(track,magneticField);
-    } else {
-      fts = trajectoryStateTransform::innerFreeState(track,magneticField);
-    }
+    // FreeTrajectoryState fts;
+    // if (doBackwardPropagation_){
+    //   fts = trajectoryStateTransform::outerFreeState(track,magneticField);
+    // } else {
+    //   fts = trajectoryStateTransform::innerFreeState(track,magneticField);
+    // }
+    FreeTrajectoryState fts = trajectoryStateTransform::innerFreeState(track,magneticField);
+
+
     auto surface = hgcTracker_->firstDisk(zside,propagationDirection)->second->surface();
     TrajectoryStateOnSurface* firstTSOS = new TrajectoryStateOnSurface(fts,surface);
     //firstTSOS = TrajectoryStateOnSurface();
@@ -355,10 +369,11 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     // Can I create a DetLayer from HGCDiskGeomDet
 
     // Fit Trajectories
+    std::cout << "Size of RecHits for refit: " << recHitsforReFit.size() << std::endl;
     std::vector<Trajectory> trajectories = fitter->fit(seed, recHitsforReFit, *firstTSOS);
 
     if (trajectories.size() == 0){
-      //std::cout << "No trajectory created!!!!" << std::endl;
+      std::cout << "No trajectory created!!!!" << std::endl;
       trackId++;
       continue;
     } 
@@ -367,8 +382,17 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
     for (auto& tm : trajectories[0].measurements()){
       auto updated_tsos = tm.updatedState();
       auto forward_predicted_tsos = tm.forwardPredictedState();
+      std::cout << "Get Detid" << std::endl;
       auto detid = tm.recHit()->geographicalId();
-      int layer = rhtools_.getLayerWithOffset(detid.rawId());
+      int layer;
+      if (detid.rawId() == 0) continue;
+      auto testgeom = static_cast<const HGCalGeometry*>(rhtools_.getSubdetectorGeometry(detid));
+      if (testgeom->present(detid.rawId())){
+        layer = rhtools_.getLayerWithOffset(detid.rawId());
+      } else {
+        layer = HGCDiskGeomDet::layerFromRawId(detid.rawId());
+      }
+      std::cout << "Create KFHits" << std::endl;
 
       //std::cout << "SeedMap: " << trackId << ", " << seedTrackIdMap[trackId] << std::endl;
 
@@ -402,8 +426,15 @@ void KFHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
       auto forward_predicted_tsos = tm.forwardPredictedState();
       auto backward_predicted_tsos = tm.backwardPredictedState();
       auto detid = tm.recHit()->geographicalId();
-      int layer = rhtools_.getLayerWithOffset(detid.rawId());
-
+      int layer;
+      if (detid.rawId() == 0) continue;
+      auto testgeom = static_cast<const HGCalGeometry*>(rhtools_.getSubdetectorGeometry(detid));
+      if (testgeom->present(detid.rawId())){
+        layer = rhtools_.getLayerWithOffset(detid.rawId());
+      }
+      else {
+        layer = HGCDiskGeomDet::layerFromRawId(detid.rawId());
+      }
       KFHit* smoothed_updated_hit = new KFHit(updated_tsos,detid,track,seedTrackIdMap[trackId],layer);
       KFHit* smoothed_forward_predicted_hit = new KFHit(forward_predicted_tsos,detid,track,seedTrackIdMap[trackId],layer);
       KFHit* smoothed_backward_predicted_hit = new KFHit(backward_predicted_tsos,detid,track,seedTrackIdMap[trackId],layer);
