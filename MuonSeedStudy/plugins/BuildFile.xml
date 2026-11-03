@@ -1,0 +1,22 @@
+<use name="CommonTools/UtilAlgos"/>
+<use name="DataFormats/CaloRecHit"/>
+<use name="DataFormats/DTRecHit"/>
+<use name="DataFormats/DetId"/>
+<use name="DataFormats/GEMRecHit"/>
+<use name="DataFormats/HGCalReco"/>
+<use name="DataFormats/MuonDetId"/>
+<use name="DataFormats/MuonReco"/>
+<use name="DataFormats/TrackReco"/>
+<use name="DataFormats/TrackingRecHit"/>
+<use name="FWCore/Framework"/>
+<use name="FWCore/MessageLogger"/>
+<use name="FWCore/ParameterSet"/>
+<use name="FWCore/ServiceRegistry"/>
+<use name="Geometry/GEMGeometry"/>
+<use name="Geometry/Records"/>
+<use name="PhysicsTools/TruthInfo"/>
+<use name="SimDataFormats/TruthInfo"/>
+<use name="root"/>
+<library file="*.cc" name="AnalyzerMuonSeedStudyPlugins">
+  <flags EDM_PLUGIN="1"/>
+</library>
